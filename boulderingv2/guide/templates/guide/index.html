@@ -1,0 +1,22 @@
+{% extends "guide/layout.html" %}
+
+{% block title %}Boulderfields Guide{% endblock %}
+
+{% block body %}
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+{% endif %}
+    
+<h1 class="text-dark">Welcome to the Okanagan</h1>
+<h1 class="text-dark">Bouldering Guide</h1>
+
+
+{% endblock %}

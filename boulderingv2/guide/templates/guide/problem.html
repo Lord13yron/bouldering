@@ -1,0 +1,62 @@
+{% extends "guide/layout.html" %}
+
+{% block title %}{{ problem.name }}{% endblock %}
+
+{% block body %}
+<h3>{{ problem.name }} [V{{ problem.grade }}]
+    <h5>Average User Grade: {{ problem.avggrade }}</h5>
+</h3>
+<h5> Rating: {{ problem.avgrating }}</h5>
+<h5>
+    <a href="{% url 'zones' %}">{{ problem.area.zone }}</a>->
+    <a href="{% url 'area' problem.area.name %}">{{ problem.area}}</a>
+</h5>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+
+{% if problem not in sends %}
+<form action="{% url 'ratings' problem.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Mark as Sent" class="btn btn-info btn-sm">
+</form>
+{% else %}
+<input type="submit" value="Problem sent!" disabled class="btn btn-success btn-sm">
+{% endif %}
+
+
+
+{% if problem not in favorites %}
+<form action="{% url 'addfavorite' problem.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Add to Favorites" class="btn btn-primary btn-sm">
+</form>
+{% else %}
+<form action="{% url 'removefavorite' problem.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Remove From Favorites" class="btn btn-danger btn-sm">
+</form>
+{% endif %}
+
+
+
+    <ul class="list-group">
+        <li class="list-group-item">Description: {{ problem.description }}</li>
+        <li class="list-group-item">First Ascent: {{ problem.fa }}</li>
+        <li class="list-group-item">
+        {% if problem.image %}
+            <img src="{{ problem.image.url }}" width="100%">
+        </li>
+        {% endif %}
+    </ul>
+
+
+{% endblock %}

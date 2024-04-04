@@ -1,0 +1,27 @@
+{% extends "guide/layout.html" %}
+
+{% block title %}Add Problem{% endblock %}
+
+{% block body %}
+{% if user.is_authenticated %}
+<h1>Add a Problem</h1>
+<div class="container border border-2" id="zone_container">
+    <form action="/addproblem" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Problem</button>  
+    </form>
+    {% endif %}
+
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

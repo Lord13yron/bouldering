@@ -1,0 +1,20 @@
+{% extends "guide/layout.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+
+{% if form.errors %}
+<p>There was an error with your form...</p>
+{% endif %}
+
+<h1>Register</h1>
+    <form action="{% url 'register_user' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+
+{% endblock %}

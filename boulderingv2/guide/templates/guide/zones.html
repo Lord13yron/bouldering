@@ -1,0 +1,31 @@
+{% extends "guide/layout.html" %}
+
+{% block title %}Areas{% endblock %}
+
+{% block body %}
+
+<h1>Zones</h1>
+
+
+<div>
+    {% for zone in zones %}
+    <div class="container border border-2" id="zone_container">
+        <h2><strong>{{ zone.name }}</strong></h2>
+        
+            <ul>
+            {% for area in areas %}
+            {% if area.zone == zone %}
+            <li class="list-group-item">
+                <a href="{% url 'area' area.name %}">{{ area }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            </ul>
+        
+        
+    </div>
+    {% endfor %}
+    
+</div>
+
+{% endblock %}

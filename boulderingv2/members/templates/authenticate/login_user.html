@@ -1,0 +1,28 @@
+{% extends "guide/layout.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<h1>Login</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Enter Username">
+    <br>
+    <input type="password" name="password" placeholder="Enter Password">
+    <button type="submit">Submit</button>
+</form>
+
+<a href="{% url 'register_user' %}">Register</a>
+    
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

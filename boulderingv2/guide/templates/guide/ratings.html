@@ -1,0 +1,26 @@
+{% extends "guide/layout.html" %}
+
+{% block title %}Ratings{% endblock %}
+
+{% block body %}
+
+
+<h1 class="text-dark">Ratings</h1>
+<h2>{{ problem.name }} [V{{problem.grade}}]</h2>
+<p>Well done! Please rate this problem and tell us what grade you think the probblem is.</p>
+
+<form action="{% url 'ratings' problem.id %}" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="rating" class="form-label">Rating</label>
+      <input name="rating" type="number" class="form-control" id="rating" min="0" max="5">
+    </div>
+    <div class="mb-3">
+      <label for="grade" class="form-label">User Grade</label>
+      <input name="grade" type="number" class="form-control" id="grade" min="0" max="17">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+
+{% endblock %}

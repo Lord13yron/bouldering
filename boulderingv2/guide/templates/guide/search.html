@@ -1,0 +1,52 @@
+{% extends "guide/layout.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block body %}
+{% if searched %}
+<h1>Problems Found</h1>
+
+<div class="container-fluid">
+    <form class="d-flex" method="POST" action="{% url 'search' %}">
+    {% csrf_token %}
+        <input class="form-control me-2" type="search" name="searched" placeholder="Search for Problems" aria-label="Search">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </form>
+</div>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Grade</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Area</th>
+                
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for problem in problems %}
+            <tr>
+                <td class="column_a" scope="row">
+                    <a href="{% url 'problem' problem.id %}">{{ problem.name }}</a>
+                </td>
+                <td class="column_b">V{{ problem.grade }}</td>
+                <td class="column_d">{{ problem.avgrating }}</td>
+                <td class="column_c">
+                    <a href="{% url 'zones' %}">{{ problem.area.zone }}</a>->
+                    <a href="{% url 'area' problem.area %}">{{ problem.area }}</a>
+                </td>
+                
+                    
+                
+            </tr>
+            {% endfor %}   
+        </tbody>
+    </table>
+{% else %}
+<h1>You forgot to search for a problem...</h1>
+{% endif %}
+
+
+{% endblock %}

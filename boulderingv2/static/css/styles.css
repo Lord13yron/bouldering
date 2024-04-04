@@ -1,0 +1,64 @@
+.sub-menu:hover .zone-menu {
+    display: block;
+}
+
+.main-title {
+    color: black;
+}
+
+body {
+    text-align: center;
+    
+    
+}
+
+table {
+    font-size: 14px;
+    width: 100%;
+}
+
+td {
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+td.column_a {width: 30%;}
+td.column_b {width: 5%;}
+td.column_c {width: 55%;}
+td.column_d {width: 10%;}
+
+.map{
+    max-width: 200px;
+}
+#zone_container{
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--bs-gray-300);
+}
+
+@media (min-width: 576px){
+    #profile {
+        width: 80%;
+        position: relative;
+        left: 5%;
+    }
+}
+
+@media (min-width: 900px){
+    #profile {
+        width: 65%;
+        position: relative;
+        left: 18%;
+    }
+}
+
+@media (min-width: 1400px){
+    #profile {
+        width: 40%;
+        position: relative;
+        left: 25%;
+    }
+}
+
