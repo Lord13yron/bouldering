@@ -38,6 +38,11 @@ td.column_d {width: 10%;}
     background-color: var(--bs-gray-300);
 }
 
+.problem img{
+    max-width: 600px;
+    max-height: 800px;
+}
+
 @media (min-width: 576px){
     #profile {
         width: 80%;
@@ -61,4 +66,8 @@ td.column_d {width: 10%;}
         left: 25%;
     }
 }
+
+
+
+
 

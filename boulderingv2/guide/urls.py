@@ -14,5 +14,6 @@ urlpatterns = [
     path("removefavorite/<int:problem_id>", views.removefavorite, name="removefavorite"),
     path("profile", views.profile, name="profile"),
     path("ratings/<int:problem_id>", views.ratings, name="ratings"),
+    path("addcomment/<int:problem_id>", views.addcomment, name="addcomment"),
     
 ]

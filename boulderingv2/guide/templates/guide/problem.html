@@ -48,7 +48,7 @@
 
 
 
-    <ul class="list-group">
+    <ul class="list-group problem">
         <li class="list-group-item">Description: {{ problem.description }}</li>
         <li class="list-group-item">First Ascent: {{ problem.fa }}</li>
         <li class="list-group-item">
@@ -58,5 +58,22 @@
         {% endif %}
     </ul>
 
+    <br>
+    <h1>Comments...</h1>
+    <a href="{% url 'addcomment' problem.id %}">
+      <button class="btn btn-primary">Add a Comment</button>
+    </a> 
+    <br>
+    {% for comment in comments %}
+    <div class="d-flex flex-column bd-highlight mb-3">
+      <div class="p-2 bd-highlight text-start fw-bold">{{ comment.user }} - {{ comment.created }}</div>
+      <div class="p-2 bd-highlight text-start">{{ comment.comment}}</div>
+  
+      
+    {% endfor %}
+    
+    
+
+    
 
 {% endblock %}

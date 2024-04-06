@@ -55,3 +55,13 @@ class Rating(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.problem}"
+    
+
+class Comment(models.Model):
+    user = models.ForeignKey(Profile, blank=True, null=True, on_delete=models.CASCADE)
+    problem = models.ForeignKey(Problem, blank=True, null=True, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    comment = models.TextField()
+
+    def __str__(self):
+        return f"{self.user} - {self.problem}"

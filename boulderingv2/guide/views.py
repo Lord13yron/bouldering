@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from .forms import ProblemForm
-from .models import Zone, Area, Problem, Rating
+from .models import Zone, Area, Problem, Rating, Comment
 
 # Create your views here.
 
@@ -40,7 +40,8 @@ def problem(request, problem_id):
         'areas': Area.objects.all(),
         'zones': Zone.objects.all(),
         'favorites':  current_user.profile.favorites.all(),
-        'sends': current_user.profile.sends.all()
+        'sends': current_user.profile.sends.all(),
+        'comments': Comment.objects.filter(problem=problem_id).order_by('created')
         
     })
 
@@ -175,3 +176,7 @@ def ratings(request, problem_id):
     return render(request, 'guide/ratings.html',{
       'problem': Problem.objects.get(id=problem_id)
     })
+
+
+def addcomment(request, problem_id):
+    return redirect(f'/problem/{problem_id}')

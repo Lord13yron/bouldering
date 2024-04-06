@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Zone, Area, Problem, Profile, Rating
+from .models import Zone, Area, Problem, Profile, Rating, Comment
 
 class AreaAdmin(admin.ModelAdmin):
     filter_horizontal =("zone",)
@@ -17,3 +17,4 @@ admin.site.register(Area)
 admin.site.register(Problem)
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Rating)
+admin.site.register(Comment)
